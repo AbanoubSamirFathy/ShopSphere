@@ -8,7 +8,7 @@ import Jewelery from "./pages/categories/Jewelery.jsx";
 import Electronics from "./pages/categories/Electronics";
 import WomenClothing from "./pages/categories/WomenClothing";
 import ProductDetails from "./pages/product/ProductDetails";
-import Cart from "./pages/cart";
+import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
 import SearchResults from "./pages/SearchResults";
 
