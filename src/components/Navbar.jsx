@@ -5,9 +5,9 @@ import {
   useNavigate,
   useSearchParams,
 } from "react-router-dom";
-import { routes } from "./routes";
-import { categories } from "./routes";
-import { useCart } from "./CartContext";
+import { routes } from "../routes/routes";
+import { categories } from "../routes/routes";
+import { useCart } from "../context/CartContext";
 
 export default function Navbar() {
   const { cartCount } = useCart();

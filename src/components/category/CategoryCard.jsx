@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { apiServices } from "./api";
-import Loading from "./Loading";
-import ErrorState from "./ErrorState";
+import { apiServices } from "../../services/api";
+import Loading from "../Loading";
+import ErrorState from "../ErrorState";
 
 const categoryStyles = {
   electronics: {

@@ -1,16 +1,16 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Layout from "./Layout";
-import Home from "./Home";
-import AllProducts from "./AllProducts";
-import Categories from "./Categories";
-import MenClothing from "./categories/MenClothing";
-import Jewelery from "./categories/Jewelery";
-import Electronics from "./categories/Electronics";
-import WomenClothing from "./categories/WomenClothing";
-import ProductDetails from "./ProductDetails";
-import Cart from "./Cart";
-import NotFound from "./NotFound.jsx";
-import SearchResults from "./search/SearchResults.jsx";
+import Layout from "./layouts/Layout.jsx";
+import Home from "./pages/Home";
+import AllProducts from "./pages/product/AllProducts.jsx"; 
+import Categories from "./components/category/Categories.jsx";
+import MenClothing from "./pages/categories/MenClothing";
+import Jewelery from "./pages/categories/Jewelery.jsx";
+import Electronics from "./pages/categories/Electronics";
+import WomenClothing from "./pages/categories/WomenClothing";
+import ProductDetails from "./pages/product/ProductDetails";
+import Cart from "./pages/cart";
+import NotFound from "./pages/NotFound";
+import SearchResults from "./pages/SearchResults";
 
 
 function App() {

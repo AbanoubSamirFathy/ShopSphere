@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { categories } from "./routes";
+import { categories } from "../routes/routes";
 
 export default function Footer() {
   return (

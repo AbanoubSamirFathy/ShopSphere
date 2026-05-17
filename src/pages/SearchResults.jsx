@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { apiServices } from "../api";
-import ProductCardItem from "../ProductCardItem";
-import { matchesSearch } from "./productSearch";
-import Loading from "../Loading";
-import ErrorState from "../ErrorState";
+import { apiServices } from "../services/api";
+import ProductCardItem from "../components/product/ProductCardItem";
+import { matchesSearch } from "../services/productSearch";
+import Loading from "../components/Loading";
+import ErrorState from "../components/ErrorState";
 
 export default function SearchResults() {
   const [searchParams] = useSearchParams();

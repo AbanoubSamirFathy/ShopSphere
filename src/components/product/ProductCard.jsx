@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { apiServices } from "./api";
+import { apiServices } from "../../services/api";
 import ProductCardItem from "./ProductCardItem";
 import { Link } from "react-router-dom";
-import Loading from "./Loading";
-import ErrorState from "./ErrorState";
+import Loading from "../../components/Loading";
+import ErrorState from "../../components/ErrorState";
 
 export default function ProductCard() {
   const [products, setProducts] = useState([]);

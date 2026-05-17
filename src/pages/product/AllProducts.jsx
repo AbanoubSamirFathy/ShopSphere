@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { apiServices } from "../api";
-import ProductCardItem from "../ProductCardItem";
-import Loading from "../Loading";
-import ErrorState from "../ErrorState";
+import { apiServices } from "../../services/api";
+import ProductCardItem from "../../components/product/ProductCardItem"
+import Loading from "../../components/Loading";
+import ErrorState from "../../components/ErrorState";
 
-export default function Jewelery() {
+export default function AllProducts() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
@@ -46,7 +46,7 @@ export default function Jewelery() {
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-700">
-              Jewelery
+              All products
             </p>
             <h2 className="mt-2 text-3xl font-black text-slate-900 sm:text-4xl">
               Designed to feel premium, priced to move
@@ -60,26 +60,24 @@ export default function Jewelery() {
 
         {isLoading && (
           <Loading
-            title="Jewelery"
-            message="Loading polished picks and gift-ready favorites."
+            title="All products"
+            message="Gathering the full catalog for you."
           />
         )}
         {error && (
           <ErrorState
             title="Something went wrong"
             message={error}
-            actionLabel="Browse all products"
-            actionTo="/products"
+            actionLabel="Back home"
+            actionTo="/"
           />
         )}
 
         {!isLoading && !error && (
           <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-            {products
-              .filter((product) => product.category === "jewelery")
-              .map((product) => (
-                <ProductCardItem key={product.id} product={product} />
-              ))}
+            {products.map((product) => (
+              <ProductCardItem key={product.id} product={product} />
+            ))}
           </div>
         )}
       </div>

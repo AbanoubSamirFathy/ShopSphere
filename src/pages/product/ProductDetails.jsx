@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { apiServices } from "./api";
-import AddToCartButton from "./AddToCartButton";
-import Loading from "./Loading";
-import ErrorState from "./ErrorState";
+import { apiServices } from "../../services/api";
+import AddToCartButton from "../../components/AddToCartButton";
+import Loading from "../../components/Loading";
+import ErrorState from "../../components/ErrorState";
 
 export default function ProductDetails() {
   const { productId } = useParams();

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { apiServices } from "../api";
-import ProductCardItem from "../ProductCardItem";
-import Loading from "../Loading";
-import ErrorState from "../ErrorState";
+import { apiServices } from "../../services/api";
+import ProductCardItem from "../../components/product/ProductCardItem";
+import Loading from "../../components/Loading";
+import ErrorState from "../../components/ErrorState";
 
 export default function MenClothing() {
   const [products, setProducts] = useState([]);
