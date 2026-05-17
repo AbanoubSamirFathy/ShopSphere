@@ -129,10 +129,12 @@ export default function Navbar() {
             to="/cart"
             className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
           >
-            <span className="flex h-6 min-w-6 items-center justify-center rounded-full bg-white/15 px-1 text-xs">
-              {cartCount}
-            </span>
-            <i className="fa-solid fa-cart-shopping"></i>
+            {cartCount > 0 && (
+              <span className="flex h-6 min-w-6 items-center justify-center rounded-full bg-white/15 px-1 text-xs">
+                {cartCount}
+              </span>
+            )}
+            {cartCount === 0 && <i className="fa-solid fa-cart-shopping"></i>}
             Cart
           </Link>
         </div>
