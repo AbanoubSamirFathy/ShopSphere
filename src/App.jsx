@@ -10,6 +10,7 @@ import Electronics from "./categories/Electronics";
 import WomenClothing from "./categories/WomenClothing";
 import ProductDetails from "./ProductDetails";
 import Cart from "./Cart";
+import NotFound from "./NotFound";
 
 function App() {
   const router = createBrowserRouter([
@@ -26,6 +27,7 @@ function App() {
         { path: "/categories/electronics", element: <Electronics /> },
         { path: "/categories/womenclothing", element: <WomenClothing /> },
         { path: "/cart", element: <Cart /> },
+        { path: "*", element: <NotFound /> }
       ],
     },
   ]);
