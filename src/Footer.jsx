@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { categories } from "./routes";
 
 export default function Footer() {
   return (
@@ -23,15 +24,15 @@ export default function Footer() {
               Shop
             </h3>
             <div className="mt-4 space-y-3 text-sm text-slate-400">
-              <Link to="#" className="block transition hover:text-white">
-                New arrivals
-              </Link>
-              <Link to="#" className="block transition hover:text-white">
-                Best sellers
-              </Link>
-              <Link to="#" className="block transition hover:text-white">
-                Trending now
-              </Link>
+              {categories.map((category) => (
+                <Link
+                  key={category.routeName}
+                  to={category.path}
+                  className="block transition hover:text-white"
+                >
+                  {category.routeName}
+                </Link>
+              ))}
             </div>
           </div>
 
@@ -73,14 +74,26 @@ export default function Footer() {
         <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
           <p>© 2026 ShopSphere. All rights reserved.</p>
           <div className="flex gap-5">
-            <Link to="#" className="transition hover:text-white">
+            <Link
+              to="https://facebook.com/"
+              className="transition hover:text-white"
+              target="_blank"
+            >
+              Facebook
+            </Link>
+            <Link
+              to="https://instagram.com/"
+              className="transition hover:text-white"
+              target="_blank"
+            >
               Instagram
             </Link>
-            <Link to="#" className="transition hover:text-white">
+            <Link
+              to="https://x.com/"
+              className="transition hover:text-white"
+              target="_blank"
+            >
               X
-            </Link>
-            <Link to="#" className="transition hover:text-white">
-              Dribbble
             </Link>
           </div>
         </div>
