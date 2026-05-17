@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
-import { useCart } from "./CartContext";
+import CartButton from "./CartButton";
 
 export default function ProductCardItem({ product }) {
-  const { addToCart } = useCart();
-
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-white/60 bg-white/85 p-5 shadow-lg shadow-slate-200/50 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
       <Link to={`/products/${product.id}`} className="block">
@@ -49,14 +47,7 @@ export default function ProductCardItem({ product }) {
             </p>
           </div>
 
-          <button
-            type="button"
-            onClick={() => addToCart(product)}
-            className="rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-cyan-700"
-          >
-            <i className="fa-solid fa-plus me-2"></i>
-            Add to Cart
-          </button>
+          <CartButton product={product} />
         </div>
       </div>
     </article>
