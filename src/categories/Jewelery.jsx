@@ -63,9 +63,11 @@ export default function Jewelery() {
 
         {!isLoading && !error && (
           <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-            {products.filter((product) => product.category === "jewelery").map((product) => (
-              <ProductCardItem key={product.id} product={product} />
-            ))}
+            {products
+              .filter((product) => product.category === "jewelery")
+              .map((product) => (
+                <ProductCardItem key={product.id} product={product} />
+              ))}
           </div>
         )}
       </div>
