@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { apiServices } from "./api";
 import { useCart } from "./CartContext";
-import CartButton from "./CartButton";
+import AddToCartButton from "./AddToCartButton";
 
 export default function ProductDetails() {
   const { productId } = useParams();
@@ -151,7 +151,7 @@ export default function ProductDetails() {
             </div>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <CartButton product={product} />
+              <AddToCartButton product={product} />
               <button
                 type="button"
                 className="rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50"

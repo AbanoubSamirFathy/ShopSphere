@@ -1,4 +1,3 @@
-import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./Layout";
 import Home from "./Home";
@@ -10,7 +9,7 @@ import Electronics from "./categories/Electronics";
 import WomenClothing from "./categories/WomenClothing";
 import ProductDetails from "./ProductDetails";
 import Cart from "./Cart";
-import NotFound from "./NotFound";
+import NotFound from "./NotFound.jsx";
 import SearchResults from "./search/SearchResults.jsx";
 
 

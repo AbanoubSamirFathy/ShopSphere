@@ -1,9 +1,11 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { useToast } from "./ToastContext";
 
 const CartContext = createContext(null);
 const CART_STORAGE_KEY = "simple-store-cart";
 
 export function CartProvider({ children }) {
+  const { showToast } = useToast();
   const [cartItems, setCartItems] = useState(() => {
     try {
       const storedCart = window.localStorage.getItem(CART_STORAGE_KEY);
@@ -18,6 +20,8 @@ export function CartProvider({ children }) {
   }, [cartItems]);
 
   const addToCart = (product) => {
+    showToast(`${product.title} added to cart.`);
+
     setCartItems((currentItems) => {
       const existingItem = currentItems.find((item) => item.id === product.id);
 
@@ -47,6 +51,12 @@ export function CartProvider({ children }) {
   };
 
   const removeFromCart = (productId) => {
+    const removedItem = cartItems.find((item) => item.id === productId);
+
+    if (removedItem) {
+      showToast(`${removedItem.title} removed from cart.`, { tone: "info" });
+    }
+
     setCartItems((currentItems) =>
       currentItems.filter((item) => item.id !== productId)
     );

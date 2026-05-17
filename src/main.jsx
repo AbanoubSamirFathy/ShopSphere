@@ -4,11 +4,14 @@ import './index.css'
 import App from './App.jsx'
 import "@fortawesome/fontawesome-free/css/all.min.css" 
 import { CartProvider } from "./CartContext.jsx"
+import { ToastProvider } from "./ToastContext.jsx"
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <CartProvider>
-      <App />
-    </CartProvider>
+    <ToastProvider>
+      <CartProvider>
+        <App />
+      </CartProvider>
+    </ToastProvider>
   </StrictMode>,
 )

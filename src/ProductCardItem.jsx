@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import CartButton from "./CartButton";
+import AddToCartButton from "./AddToCartButton";
 
 export default function ProductCardItem({ product }) {
   return (
@@ -47,7 +47,7 @@ export default function ProductCardItem({ product }) {
             </p>
           </div>
 
-          <CartButton product={product} />
+          <AddToCartButton product={product} />
         </div>
       </div>
     </article>
