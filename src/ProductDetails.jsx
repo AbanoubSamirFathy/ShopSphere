@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { apiServices } from "./api";
-import { useCart } from "./CartContext";
 import AddToCartButton from "./AddToCartButton";
+import Loading from "./Loading";
+import ErrorState from "./ErrorState";
 
 export default function ProductDetails() {
   const { productId } = useParams();
-  const { addToCart } = useCart();
   const [product, setProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
@@ -46,7 +46,11 @@ export default function ProductDetails() {
     return (
       <section className="px-4 py-12">
         <div className="mx-auto max-w-screen-xl">
-          <p className="text-sm text-slate-600">Loading product details...</p>
+          <Loading
+            title="Product details"
+            message="Loading product information, pricing, and reviews."
+            variant="detail"
+          />
         </div>
       </section>
     );
@@ -55,16 +59,13 @@ export default function ProductDetails() {
   if (error || !product) {
     return (
       <section className="px-4 py-12">
-        <div className="mx-auto max-w-screen-xl rounded-[1.75rem] border border-red-200 bg-red-50 p-8">
-          <p className="text-sm font-medium text-red-700">
-            {error || "Product not found."}
-          </p>
-          <Link
-            to="/products"
-            className="mt-4 inline-flex rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-cyan-700"
-          >
-            Back to products
-          </Link>
+        <div className="mx-auto max-w-screen-xl">
+          <ErrorState
+            title="Something went wrong"
+            message={error || "Product not found."}
+            actionLabel="Back to products"
+            actionTo="/products"
+          />
         </div>
       </section>
     );

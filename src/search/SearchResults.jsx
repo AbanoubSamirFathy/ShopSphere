@@ -3,6 +3,8 @@ import { Link, useSearchParams } from "react-router-dom";
 import { apiServices } from "../api";
 import ProductCardItem from "../ProductCardItem";
 import { matchesSearch } from "./productSearch";
+import Loading from "../Loading";
+import ErrorState from "../ErrorState";
 
 export default function SearchResults() {
   const [searchParams] = useSearchParams();
@@ -77,9 +79,19 @@ export default function SearchResults() {
         )}
 
         {query && isLoading && (
-          <p className="mb-4 text-sm text-slate-600">Loading results...</p>
+          <Loading
+            title="Search results"
+            message={`Searching the catalog for "${query}".`}
+          />
         )}
-        {query && error && <p className="mb-4 text-sm text-red-600">{error}</p>}
+        {query && error && (
+          <ErrorState
+            title="Something went wrong"
+            message={error}
+            actionLabel="Browse all products"
+            actionTo="/products"
+          />
+        )}
 
         {query && !isLoading && !error && (
           <>

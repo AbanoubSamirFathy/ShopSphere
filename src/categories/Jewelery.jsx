@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { apiServices } from "../api";
 import ProductCardItem from "../ProductCardItem";
+import Loading from "../Loading";
+import ErrorState from "../ErrorState";
 
 export default function Jewelery() {
   const [products, setProducts] = useState([]);
@@ -57,9 +59,19 @@ export default function Jewelery() {
         </div>
 
         {isLoading && (
-          <p className="mb-4 text-sm text-slate-600">Loading products...</p>
+          <Loading
+            title="Jewelery"
+            message="Loading polished picks and gift-ready favorites."
+          />
         )}
-        {error && <p className="mb-4 text-sm text-red-600">{error}</p>}
+        {error && (
+          <ErrorState
+            title="Something went wrong"
+            message={error}
+            actionLabel="Browse all products"
+            actionTo="/products"
+          />
+        )}
 
         {!isLoading && !error && (
           <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { apiServices } from "./api";
+import Loading from "./Loading";
+import ErrorState from "./ErrorState";
 
 const categoryStyles = {
   electronics: {
@@ -82,9 +84,20 @@ export default function CategoryCard() {
         </div>
 
         {isLoading && (
-          <p className="text-sm text-slate-600">Loading categories...</p>
+          <Loading
+            title="Shop by category"
+            message="Preparing the main departments in the store."
+            variant="categories"
+          />
         )}
-        {error && <p className="text-sm text-red-600">{error}</p>}
+        {error && (
+          <ErrorState
+            title="Something went wrong"
+            message={error}
+            actionLabel="Browse all products"
+            actionTo="/products"
+          />
+        )}
 
         {!isLoading && !error && (
           <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">

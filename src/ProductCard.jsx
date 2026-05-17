@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { apiServices } from "./api";
 import ProductCardItem from "./ProductCardItem";
 import { Link } from "react-router-dom";
+import Loading from "./Loading";
+import ErrorState from "./ErrorState";
 
 export default function ProductCard() {
   const [products, setProducts] = useState([]);
@@ -58,9 +60,19 @@ export default function ProductCard() {
         </div>
 
         {isLoading && (
-          <p className="mb-4 text-sm text-slate-600">Loading products...</p>
+          <Loading
+            title="Featured products"
+            message="Curating standout picks for the home page."
+          />
         )}
-        {error && <p className="mb-4 text-sm text-red-600">{error}</p>}
+        {error && (
+          <ErrorState
+            title="Something went wrong"
+            message={error}
+            actionLabel="View full catalog"
+            actionTo="/products"
+          />
+        )}
 
         {!isLoading && !error && (
           <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
