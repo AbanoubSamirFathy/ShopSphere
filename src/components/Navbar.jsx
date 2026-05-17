@@ -22,11 +22,27 @@ export default function Navbar() {
     }
   }, [location.pathname, searchParams]);
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    const query = searchInput.trim();
+  // function handleSubmit(event) {
+  //   event.preventDefault();
+  //   const query = searchInput.trim();
 
-    navigate(query ? `/search?q=${encodeURIComponent(query)}` : "/search");
+  //   navigate(query ? `/search?q=${encodeURIComponent(query)}` : "/search");
+  // }
+
+  function handleSearchChange(event) {
+    const value = event.target.value;
+    setSearchInput(value);
+
+    // Real-time navigation on every keystroke
+    navigate(
+      value.trim()
+        ? `/search?q=${encodeURIComponent(value.trim())}`
+        : "/search",
+    );
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault(); // keep for accessibility (Enter key)
   }
 
   function clearSearch() {
@@ -40,7 +56,10 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 px-2 sm:px-3 md:px-4 pt-2 sm:pt-3 md:pt-4">
       <div className="mx-auto flex max-w-screen-xl items-center justify-between gap-2 sm:gap-3 md:gap-4 lg:gap-4 rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-[2rem] border border-white/60 bg-white/80 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 md:py-3 shadow-lg shadow-slate-200/60 backdrop-blur-xl">
-        <Link to="#" className="flex items-center gap-1.5 sm:gap-2.5 md:gap-3 flex-shrink-0">
+        <Link
+          to="#"
+          className="flex items-center gap-1.5 sm:gap-2.5 md:gap-3 flex-shrink-0"
+        >
           <div className="flex h-9 sm:h-10 md:h-11 w-9 sm:w-10 md:w-11 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-cyan-600 text-xs sm:text-sm font-black text-white flex-shrink-0">
             S
           </div>
@@ -101,7 +120,7 @@ export default function Navbar() {
               <input
                 type="search"
                 value={searchInput}
-                onChange={(event) => setSearchInput(event.target.value)}
+                onChange={handleSearchChange}
                 placeholder="Search products"
                 className="w-full rounded-full border border-slate-200 bg-white px-9 md:px-11 py-2.5 md:py-3 pr-10 md:pr-12 text-xs md:text-sm font-medium text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-cyan-400 focus:ring-2 md:focus:ring-4 focus:ring-cyan-100"
               />
@@ -116,13 +135,6 @@ export default function Navbar() {
                 </button>
               )}
             </label>
-
-            <button
-              type="submit"
-              className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-4 md:px-5 py-2.5 md:py-3 text-xs md:text-sm font-semibold text-slate-900 transition hover:border-slate-300 hover:bg-slate-100 whitespace-nowrap flex-shrink-0"
-            >
-              Search
-            </button>
           </form>
 
           <form
@@ -134,7 +146,7 @@ export default function Navbar() {
               <input
                 type="search"
                 value={searchInput}
-                onChange={(event) => setSearchInput(event.target.value)}
+                onChange={handleSearchChange}
                 placeholder="Search products"
                 className="w-full rounded-full border border-slate-200 bg-white px-9 py-2.5 pr-10 text-xs font-medium text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-100"
               />
@@ -149,12 +161,6 @@ export default function Navbar() {
                 </button>
               )}
             </label>
-            <button
-              type="submit"
-              className="rounded-full border border-slate-200 bg-white px-4 py-2.5 text-xs font-semibold text-slate-900 transition hover:border-slate-300 hover:bg-slate-100 whitespace-nowrap flex-shrink-0"
-            >
-              Search
-            </button>
           </form>
 
           <Link
@@ -166,7 +172,9 @@ export default function Navbar() {
                 {cartCount}
               </span>
             )}
-            {cartCount === 0 && <i className="fa-solid fa-cart-shopping text-xs sm:text-sm"></i>}
+            {cartCount === 0 && (
+              <i className="fa-solid fa-cart-shopping text-xs sm:text-sm"></i>
+            )}
             <span className="hidden sm:inline">Cart</span>
           </Link>
         </div>
